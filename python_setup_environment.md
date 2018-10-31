@@ -65,3 +65,20 @@ There're more options for packages upload:
 2. ```twine upload --repository-url https://test.pypi.org/legacy/ dist/*```
 3. ```twine upload --repository-url https://test.pypi.org/legacy/ --username pypi_username  --password pypi_password dist/*```
 4. ```twine upload --repository-url https://test.pypi.org/legacy/ --config-file config.pypirc dist/*```
+
+
+Running Unit Tests from separate folder will require to import package or extend system pathes to folder with package sources.
+You will need to deploy package to repository and install it locally. Alternative solution is to insert absolute path to folder with package 
+
+```import sys```
+```sys.path.insert(0, "/path/to/your/package_or_module")```
+
+10. Install package from test repository
+
+```pip install --index-url https://test.pypi.org/simple  PACKAGE-NAME```
+
+Alternative way to force install
+```pip install --upgrade --force-reinstall PACKAGE-NAME```
+
+11. Run all unit tests in folder
+```call python -m unittest discover PATH-TO-UNIT-TESTS```
